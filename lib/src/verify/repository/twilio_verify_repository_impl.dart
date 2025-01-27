@@ -33,7 +33,7 @@ class TwilioVerifyRepositoryImpl extends TwilioVerifyRepository {
       required String verificationChannel}) async {
     final headers =
         RequestUtils.generateHeaderWithBase64(twilioCreds.authString);
-    final body = {'To': recipient, 'Channel': verificationChannel};
+    final body = {'To': recipient, 'Channel': verificationChannel,'ttl': 60};
     final String url =
         RequestUtils.generateSendVerifyCodeUrl(verificationServiceId);
     final http.Response response = await NetworkHelper.handleNetworkRequest(
